@@ -1,13 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const parkingLotSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  lotId: { type: String, required: true }, // Stores the Lot ID
-  totalSpaces: { type: Number, required: true },
+  permitType: { type: String },
+  day: { type: String },
+  lotName: { type: String },
+  lotNumber: { type: String },
+  totalSpaces: { type: Number },
   availability: {
-    type: Map,
-    of: Map, // Nested map for day -> time slot -> percentage full
+    "7:00 am": { type: String },
+    "11:00 am": { type: String },
+    "2:00 pm": { type: String },
+    "4:00 pm": { type: String },
   },
 });
 
-module.exports = mongoose.model('ParkingLot', parkingLotSchema);
+// Explicitly specify collection name to avoid pluralization issues
+module.exports = mongoose.model("ParkingLot", parkingLotSchema, "parkinglots");
