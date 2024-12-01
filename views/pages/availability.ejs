@@ -1,0 +1,26 @@
+<!-- views/pages/availability.ejs -->
+<%- include('../partials/header') %>
+
+<div class="container mt-5">
+  <h1>Parking Lot Availability</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Lot Name</th>
+        <th>Day</th>
+        <th>Available Spots</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% parkingLots.forEach(function(lot) { %>
+        <tr>
+          <td><%= lot.name %></td>
+          <td><%= lot.day %></td>
+          <td><%= lot.availableSpots %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>
