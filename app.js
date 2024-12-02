@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config(); // For loading environment variables
 
 // Routes
 const indexRouter = require('./routes/index');
@@ -9,8 +10,12 @@ const apiRouter = require('./routes/api');
 
 const app = express();
 
-// Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/lsu_parking')
+// MongoDB Connection
+const DB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/lsu_parking';
+mongoose.connect(DB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
