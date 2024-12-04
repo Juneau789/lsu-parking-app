@@ -6,7 +6,7 @@ const ParkingLot = require("../models/ParkingLot");
 const URL = "https://www.lsu.edu/parking/availability.php";
 
 mongoose
-  .connect("mongodb+srv://ilarse1:zuY4HxtS3gxlWMoe@lsu-parking-app-hi.1avnk.mongodb.net/", {
+  .connect('mongodb+srv://ilarse1:zuY4HxtS3gxlWMoe@lsu-parking-app-hi.1avnk.mongodb.net/', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

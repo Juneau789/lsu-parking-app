@@ -12,7 +12,19 @@ router.get('/parking-lots', async (req, res) => {
 // Add a new parking lot
 router.post('/parking-lots', async (req, res) => {
   try {
-    const newLot = new ParkingLot(req.body);
+    const newLot = new ParkingLot({
+      permitType: req.body.permitType,
+      day: req.body.day,
+      lotName: req.body.lotName,
+      lotNumber: req.body.lotNumber,
+      totalSpaces: req.body.totalSpaces,
+      availability: {
+        '7:00 am': req.body.availability['7:00 am'],
+        '11:00 am': req.body.availability['11:00 am'],
+        '2:00 pm': req.body.availability['2:00 pm'],
+        '4:00 pm': req.body.availability['4:00 pm'],
+      },
+    });
     await newLot.save();
     res.redirect('/availability'); // Redirect to Availability page after adding
   } catch (error) {
