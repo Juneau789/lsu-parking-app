@@ -11,7 +11,7 @@ const apiRouter = require('./routes/api');
 const app = express();
 
 // MongoDB Connection
-const DB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/lsu_parking';
+const DB_URI = process.env.MONGODB_URI || 'mongodb+srv://ilarse1:zuY4HxtS3gxlWMoe@lsu-parking-app-hi.1avnk.mongodb.net/';
 mongoose.connect(DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
