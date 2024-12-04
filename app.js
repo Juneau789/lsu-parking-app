@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-require('dotenv').config(); // For loading environment variables
+const methodOverride = require('method-override'); // Add method-override
+require('dotenv').config(); // For environment variables
 
 // Routes
 const indexRouter = require('./routes/index');
@@ -11,13 +12,16 @@ const apiRouter = require('./routes/api');
 const app = express();
 
 // MongoDB Connection
-const DB_URI = process.env.MONGODB_URI || 'mongodb+srv://ilarse1:zuY4HxtS3gxlWMoe@lsu-parking-app-hi.1avnk.mongodb.net/';
-mongoose.connect(DB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+const DB_URI =
+  process.env.MONGODB_URI ||
+  'mongodb+srv://ilarse1:zuY4HxtS3gxlWMoe@lsu-parking-app-hi.1avnk.mongodb.net/';
+mongoose
+  .connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 mongoose.connection.on('connected', () => {
   console.log('Mongoose connected to MongoDB');
@@ -30,6 +34,7 @@ mongoose.connection.on('error', (err) => {
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(methodOverride('_method')); // Use method-override
 
 // Set view engine
 app.set('view engine', 'ejs');

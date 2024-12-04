@@ -10,23 +10,23 @@
       <form action="/api/parking-lots" method="POST">
         <div class="mb-3">
           <label for="permitType" class="form-label">Permit Type</label>
-          <input type="text" class="form-control" id="permitType" name="permitType" required>
+          <input type="text" class="form-control" id="permitType" name="permitType" required />
         </div>
         <div class="mb-3">
           <label for="day" class="form-label">Day</label>
-          <input type="text" class="form-control" id="day" name="day" required>
+          <input type="text" class="form-control" id="day" name="day" required />
         </div>
         <div class="mb-3">
           <label for="lotName" class="form-label">Lot Name</label>
-          <input type="text" class="form-control" id="lotName" name="lotName" required>
+          <input type="text" class="form-control" id="lotName" name="lotName" required />
         </div>
         <div class="mb-3">
           <label for="lotNumber" class="form-label">Lot Number</label>
-          <input type="text" class="form-control" id="lotNumber" name="lotNumber" required>
+          <input type="text" class="form-control" id="lotNumber" name="lotNumber" required />
         </div>
         <div class="mb-3">
           <label for="totalSpaces" class="form-label">Total Spaces</label>
-          <input type="number" class="form-control" id="totalSpaces" name="totalSpaces" required>
+          <input type="number" class="form-control" id="totalSpaces" name="totalSpaces" required />
         </div>
         <button type="submit" class="btn btn-primary">Add Parking Lot</button>
       </form>
@@ -47,7 +47,7 @@
       </tr>
     </thead>
     <tbody>
-      <% parkingLots.forEach(lot => { %>
+      <% parkingLots.forEach((lot) => { %>
         <tr>
           <td><%= lot.permitType %></td>
           <td><%= lot.day %></td>
@@ -55,8 +55,8 @@
           <td><%= lot.lotNumber %></td>
           <td><%= lot.totalSpaces %></td>
           <td>
-            <form action="/api/parking-lots/<%= lot._id %>" method="POST" style="display: inline;">
-              <input type="hidden" name="_method" value="DELETE">
+            <form action="/api/parking-lots/<%= lot._id %>?_method=DELETE" method="POST" style="display: inline;">
+              <input type="hidden" name="_method" value="DELETE" />
               <button type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
           </td>

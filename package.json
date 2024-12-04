@@ -8,7 +8,13 @@
     "scrape": "node scripts/scrape.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["LSU", "parking", "ExpressJS", "MongoDB", "web-app"],
+  "keywords": [
+    "LSU",
+    "parking",
+    "ExpressJS",
+    "MongoDB",
+    "web-app"
+  ],
   "author": "Your Name",
   "license": "ISC",
   "description": "A web application to manage LSU parking lot availability.",
@@ -16,12 +22,13 @@
     "axios": "^1.7.8",
     "body-parser": "^1.20.3",
     "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "method-override": "^3.0.0",
     "mongoose": "^8.8.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
   }
 }
-
